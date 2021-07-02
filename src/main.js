@@ -9,11 +9,14 @@ import '@/assets/style/common.styl'
 import router from '@/router'
 import '@/router/permission'
 
+// store
+import store from './store'
+
 // component
 import Icon from '@/components/Icon'
 
 const app = createApp(App)
-app.use(router).mount('#app')
+app.use(router).use(store).mount('#app')
 
 // common components
 app.component('Icon', Icon)

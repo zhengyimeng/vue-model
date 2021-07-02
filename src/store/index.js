@@ -1,7 +1,38 @@
-/**
- * 大家如果用 vuex，对着文档写就可以了，但是！！！
- * 要时刻记住，我们用的可是 vue3 啊
- */
-import { ref } from 'vue'
+import { createStore } from 'vuex'
+import { SET_USER_INFO, SET_USER_BALANCE, setUserBalance } from './actions'
+import { getUserBalance } from '@/api'
 
-export const userinfo = ref(userinfo)
+const store = createStore({
+  state: {
+    userinfo: {},
+    userBalance: {}
+  },
+  getters: {
+    username(state) {
+      return state.userinfo.username
+    }
+  },
+  mutations: {
+    [SET_USER_INFO](state, action) {
+      console.log(action.payload)
+      state.userinfo = action.payload
+    },
+
+    [SET_USER_BALANCE](state, action) {
+      state.userBalance = action.payload
+    }
+  },
+  actions: {
+    /**
+     * 保存一些异步方法，比如请求数据
+     */
+    getUserbalance({ commit }) {
+      getUserBalance().then(result => {
+        commit(SET_USER_BALANCE, setUserBalance(result.data))
+      })
+    }
+  },
+  modules: {}
+})
+
+export default store

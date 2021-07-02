@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.test-box
-  color $success-color
-  $dialog()
+  main
+    width $content-width
+    margin auto
 </style>

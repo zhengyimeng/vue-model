@@ -10,5 +10,14 @@ export const someRoutes = [
     children: [
       { path: '', component: () => import('../views/home') }
     ]
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: Layout,
+    meta: { title: 'About', icon: 'about' },
+    children: [
+      { path: '', component: () => import('../views/about') }
+    ]
   }
 ]

@@ -3,3 +3,5 @@
  */
 
 export const DOM_TITLE = 'my project'
+
+export const WS_URL = '/ws/xx'
